@@ -10,7 +10,10 @@
   <ItemGroup>
     <Folder Include="InputModel\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIPolicy.Core\AIPolicy.Core.csproj" />
   </ItemGroup>
 
 </Project>

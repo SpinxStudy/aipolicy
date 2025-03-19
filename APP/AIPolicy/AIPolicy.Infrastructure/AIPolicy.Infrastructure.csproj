@@ -8,8 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Persistency\Repository\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.3" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIPolicy.Core\AIPolicy.Core.csproj" />
   </ItemGroup>
 
 </Project>

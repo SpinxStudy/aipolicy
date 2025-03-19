@@ -1,3 +1,7 @@
+using AIPolicy.Application.Service;
+using AIPolicy.Core.Interface.Repository;
+using AIPolicy.Infrastructure.Persistency.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Dependencies
+builder.Services.AddScoped<ITriggerRepository, TriggerRepository>();
+builder.Services.AddScoped<TriggerService>();
 
 var app = builder.Build();
 
@@ -17,9 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

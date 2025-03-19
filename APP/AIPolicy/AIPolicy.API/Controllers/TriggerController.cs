@@ -19,7 +19,7 @@ public class TriggerController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] Trigger trigger)
+    public async Task<IActionResult> Create()
     {
         return Ok();
     }
