@@ -4,12 +4,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.API", "AIPolicy.API\AIPolicy.API.csproj", "{D0663584-5D1A-4FE7-B33E-60C7A1E66AD1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DCB8D3B-1205-470F-B0CA-815066C45013} = {5DCB8D3B-1205-470F-B0CA-815066C45013}
+		{EDF0EFD0-ED96-48FC-9E84-AAC5AAA2233C} = {EDF0EFD0-ED96-48FC-9E84-AAC5AAA2233C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.Application", "AIPolicy.Application\AIPolicy.Application.csproj", "{5DCB8D3B-1205-470F-B0CA-815066C45013}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F52D3B19-8557-4035-ABF3-6F290E451ACB} = {F52D3B19-8557-4035-ABF3-6F290E451ACB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.Core", "AIPolicy.Core\AIPolicy.Core.csproj", "{F52D3B19-8557-4035-ABF3-6F290E451ACB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.Infrastructure", "AIPolicy.Infrastructure\AIPolicy.Infrastructure.csproj", "{EDF0EFD0-ED96-48FC-9E84-AAC5AAA2233C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F52D3B19-8557-4035-ABF3-6F290E451ACB} = {F52D3B19-8557-4035-ABF3-6F290E451ACB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
