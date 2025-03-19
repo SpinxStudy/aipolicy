@@ -7,4 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Interface\Service\" />
+    <Folder Include="Interface\Repository\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>
