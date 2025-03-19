@@ -7,3 +7,4 @@
 /APP/AIPolicy/AIPolicy.Application/bin
 /APP/AIPolicy/AIPolicy.Core/bin
 /APP/AIPolicy/AIPolicy.Infrastructure/bin
+*.bin
