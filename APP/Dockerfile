@@ -4,22 +4,22 @@ WORKDIR /src
 
 # Copia o arquivo de solução e todos os projetos
 COPY AIPolicy/AIPolicy.sln .
-COPY AIPolicy/AIPolicy.Core/AIPolicy.Core.csproj AIPolicy/AIPolicy.Core/
-COPY AIPolicy/AIPolicy.Application/AIPolicy.Application.csproj AIPolicy/AIPolicy.Application/
-COPY AIPolicy/AIPolicy.Infrastructure/AIPolicy.Infrastructure.csproj AIPolicy/AIPolicy.Infrastructure/
-COPY AIPolicy/AIPolicy.API/AIPolicy.API.csproj AIPolicy/AIPolicy.API/
+COPY AIPolicy/AIPolicy.Core/AIPolicy.Core.csproj AIPolicy.Core/
+COPY AIPolicy/AIPolicy.Application/AIPolicy.Application.csproj AIPolicy.Application/
+COPY AIPolicy/AIPolicy.Infrastructure/AIPolicy.Infrastructure.csproj AIPolicy.Infrastructure/
+COPY AIPolicy/AIPolicy.API/AIPolicy.API.csproj AIPolicy.API/
 
 # Restaura as dependências da solução
-RUN dotnet restore AIPolicy/AIPolicy.sln
+RUN dotnet restore AIPolicy.sln
 
 # Copia o código-fonte de todos os projetos
-COPY AIPolicy/AIPolicy.Core/ AIPolicy/AIPolicy.Core/
-COPY AIPolicy/AIPolicy.Application/ AIPolicy/AIPolicy.Application/
-COPY AIPolicy/AIPolicy.Infrastructure/ AIPolicy/AIPolicy.Infrastructure/
-COPY AIPolicy/AIPolicy.API/ AIPolicy/AIPolicy.API/
+COPY AIPolicy/AIPolicy.Core/ AIPolicy.Core/
+COPY AIPolicy/AIPolicy.Application/ AIPolicy.Application/
+COPY AIPolicy/AIPolicy.Infrastructure/ AIPolicy.Infrastructure/
+COPY AIPolicy/AIPolicy.API/ AIPolicy.API/
 
 # Compila e publica o projeto da API
-WORKDIR /src/AIPolicy/AIPolicy.API
+WORKDIR /src/AIPolicy.API
 RUN dotnet publish AIPolicy.API.csproj -c Release -o /app/publish
 
 # Etapa 2: Criação da imagem de runtime (usando apenas o runtime do .NET)
