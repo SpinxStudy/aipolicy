@@ -1,0 +1,5 @@
+/APP/AIPolicy/.vs
+/APP/AIPolicy/AIPolicy.API/obj
+/APP/AIPolicy/AIPolicy.Application/obj
+/APP/AIPolicy/AIPolicy.Core/obj
+/APP/AIPolicy/AIPolicy.Infrastructure/obj

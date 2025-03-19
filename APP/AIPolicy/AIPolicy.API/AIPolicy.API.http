@@ -1,0 +1,6 @@
+@AIPolicy.API_HostAddress = http://localhost:5019
+
+GET {{AIPolicy.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
