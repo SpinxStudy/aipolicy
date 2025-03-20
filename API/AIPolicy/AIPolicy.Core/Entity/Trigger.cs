@@ -18,6 +18,7 @@ public class Trigger
     public bool Active { get; set; }
     public bool AttackValid { get; set; }
     public Condition RootCondition { get; set; }
+    public DateTime LastChange { get; set; }
 
     public Trigger()
     {

@@ -21,7 +21,6 @@ GRANT ALL PRIVILEGES ON DATABASE pw_tools_db TO app_user;
 CREATE TABLE IF NOT EXISTS public."Policy" (
     id INTEGER PRIMARY KEY,
     version INTEGER NOT NULL,
-    max_version INTEGER NOT NULL DEFAULT 0,
     name VARCHAR(255),
     last_change TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -30,11 +29,11 @@ CREATE TABLE IF NOT EXISTS public."Trigger" (
     id INTEGER PRIMARY KEY,
     id_policy INTEGER NOT NULL,
     version INTEGER NOT NULL,
-    max_version INTEGER NOT NULL DEFAULT 0,
     name VARCHAR(255) NOT NULL,
     active BOOLEAN NOT NULL,
     run BOOLEAN NOT NULL,
     attack_valid BOOLEAN NOT NULL,
+    last_change TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_policy FOREIGN KEY (id_policy)
         REFERENCES public."Policy"(id)
 );
@@ -48,6 +47,7 @@ CREATE TABLE IF NOT EXISTS public."Condition" (
     subnode_l INTEGER,
     condition_right_id INTEGER,
     subnode_r INTEGER,
+    last_change TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_trigger FOREIGN KEY (id_trigger)
         REFERENCES public."Trigger"(id),
     CONSTRAINT fk_condition_left FOREIGN KEY (condition_left_id)
@@ -64,42 +64,21 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO app_
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO app_user;
 
 -- Mocking de dados
-INSERT INTO public."Policy"(id, version, max_version, name)
+INSERT INTO public."Policy"(id, version, name)
 VALUES
-(1, 1, 1, 'Invasão dos Dragões'),
-(2, 1, 1, 'Batalha Épica dos Magos');
+(1, 1, 'Evento Perfect World - Invasão');
 
-INSERT INTO public."Trigger"(id, id_policy, version, max_version, name, active, run, attack_valid)
+INSERT INTO public."Trigger"(id, id_policy, version, name, active, run, attack_valid)
 VALUES
-(1, 1, 1, 1, 'Trigger de Ataque Dragão', TRUE, FALSE, TRUE),
-(2, 1, 1, 1, 'Trigger de Defesa Dragão', TRUE, TRUE, FALSE);
+(1, 1, 1, 'Trigger de Ataque dos Dragões', TRUE, FALSE, TRUE),
+(2, 1, 1, 'Trigger de Defesa dos Dragões', TRUE, TRUE, FALSE);
 
-INSERT INTO public."Trigger"(id, id_policy, version, max_version, name, active, run, attack_valid)
-VALUES
-(3, 2, 1, 1, 'Trigger de Magia Explosiva', TRUE, FALSE, TRUE),
-(4, 2, 1, 1, 'Trigger de Escudo Mágico', TRUE, TRUE, FALSE);
-
--- Condition aninhada (para Trigger 1)
 INSERT INTO public."Condition"(id, id_trigger, type, value, condition_left_id, subnode_l, condition_right_id, subnode_r)
 VALUES
-(1, 1, 1, '{"evento": "dragon_fire", "dano": 150}', NULL, NULL, NULL, NULL);
-
--- Condition principal que referencia a condição aninhada (para Trigger 1)
-INSERT INTO public."Condition"(id, id_trigger, type, value, condition_left_id, subnode_l, condition_right_id, subnode_r)
-VALUES
+(1, 1, 1, '{"evento": "dragon_fire", "dano": "150"}', NULL, NULL, NULL, NULL),
 (2, 1, 2, '{"acao": "evasion"}', 1, 0, NULL, NULL);
 
 INSERT INTO public."Condition"(id, id_trigger, type, value, condition_left_id, subnode_l, condition_right_id, subnode_r)
 VALUES
-(3, 2, 1, '{"evento": "shield_activation", "duracao": 5}', NULL, NULL, NULL, NULL),
+(3, 2, 1, '{"evento": "shield_activation", "duracao": "5"}', NULL, NULL, NULL, NULL),
 (4, 2, 2, '{"acao": "counter_attack"}', NULL, NULL, NULL, NULL);
-
-INSERT INTO public."Condition"(id, id_trigger, type, value, condition_left_id, subnode_l, condition_right_id, subnode_r)
-VALUES
-(5, 3, 1, '{"evento": "special_skill", "tempo_recarga": 10}', NULL, NULL, NULL, NULL),
-(6, 3, 2, '{"acao": "boost_damage"}', NULL, NULL, NULL, NULL);
-
-INSERT INTO public."Condition"(id, id_trigger, type, value, condition_left_id, subnode_l, condition_right_id, subnode_r)
-VALUES
-(7, 4, 1, '{"evento": "magic_shield", "forca": 50}', NULL, NULL, NULL, NULL),
-(8, 4, 2, '{"acao": "retreat"}', NULL, NULL, NULL, NULL);

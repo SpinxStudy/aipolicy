@@ -14,6 +14,7 @@ public class Policy
     public int Id { get; set; }
     public int Version { get; set; }
     public List<Trigger> Triggers { get; set; }
+    public DateTime LastChange { get; set; }
 
     public Policy()
     {
