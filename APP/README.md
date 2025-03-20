@@ -28,4 +28,4 @@ cd Angular
 npm install
 
 6. Testando a execucao local (container):
-ng serve --host 0.0.0.0 --port 4200
+ng serve --host 0.0.0.0 --port 4200 --hmr --poll=2000
