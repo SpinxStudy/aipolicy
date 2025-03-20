@@ -8,3 +8,4 @@
 /API/AIPolicy/AIPolicy.Core/bin
 /API/AIPolicy/AIPolicy.Infrastructure/bin
 *.bin
+APP/Angular/node_modules/
