@@ -3,8 +3,8 @@ ASP.NET Core Web API - .NET 8
 Author: Wladson Cedraz
 -------------------------------
 
-1. Garanta estar no diretorio (/APP):
-cd /APP
+1. Garanta estar no diretorio (/API):
+cd /API
 
 2. Construa a imagem a partir do Dockerfile:
 docker build -t aipolicy-api:1.0 .
