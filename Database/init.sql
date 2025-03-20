@@ -1,28 +1,25 @@
--- Criar um usuário inicial para utilizar na app, se não existir
+-- Criando usuario para aplicacao 
 DO $$
 BEGIN
     CREATE ROLE app_user WITH LOGIN PASSWORD 'app#aipolicypwd';
 EXCEPTION
     WHEN duplicate_object THEN
-        RAISE NOTICE 'Role app_user já existe. Ignorando criação.';
+        RAISE NOTICE 'Role app_user já existe.';
 END
 $$;
 
--- Criar o banco de dados se não existir
--- Como o comando CREATE DATABASE não pode ser executado dentro de um bloco transacional,
--- usamos uma consulta que retorna o comando condicionalmente e o \gexec para executá-lo.
+-- Criando banco de dados
 SELECT 'CREATE DATABASE pw_tools_db WITH OWNER app_user'
 WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'pw_tools_db')
 \gexec
 
--- Conecta no banco criado (ou já existente)
 \c pw_tools_db
 
--- Concede privilégios ao usuário (GRANT já ignora se os privilégios já estiverem definidos)
+-- Concede privilégios no banco para o app_user
 GRANT ALL PRIVILEGES ON DATABASE pw_tools_db TO app_user;
 
--- Criação da tabela trigger se ela não existir
-CREATE TABLE IF NOT EXISTS trigger (
+-- Criando tabela Trigger no schema public
+CREATE TABLE IF NOT EXISTS public."trigger" (
     id SERIAL PRIMARY KEY,
     version INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL,
@@ -32,8 +29,13 @@ CREATE TABLE IF NOT EXISTS trigger (
     operations VARCHAR(255)
 );
 
--- Inserção idempotente de dados na tabela trigger
-INSERT INTO trigger (id, version, name, active, attack_valid, root_conditions, operations) VALUES
+-- Concede privilégios para ao app_user
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO app_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO app_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO app_user;
+
+-- Mocking de dados
+INSERT INTO public."trigger" (id, version, name, active, attack_valid, root_conditions, operations) VALUES
     (1, 1, 'Trigger 1', true, true, 'root_conditions', 'operations'),
     (2, 1, 'Trigger 2', false, true, 'root_conditions', 'operations'),
     (3, 1, 'Trigger 3', true, false, 'root_conditions', 'operations')

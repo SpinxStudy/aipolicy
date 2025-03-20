@@ -18,6 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.Core", "AIPolicy.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIPolicy.Infrastructure", "AIPolicy.Infrastructure\AIPolicy.Infrastructure.csproj", "{EDF0EFD0-ED96-48FC-9E84-AAC5AAA2233C}"
 	ProjectSection(ProjectDependencies) = postProject
+		{5DCB8D3B-1205-470F-B0CA-815066C45013} = {5DCB8D3B-1205-470F-B0CA-815066C45013}
 		{F52D3B19-8557-4035-ABF3-6F290E451ACB} = {F52D3B19-8557-4035-ABF3-6F290E451ACB}
 	EndProjectSection
 EndProject

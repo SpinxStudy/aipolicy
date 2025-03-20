@@ -27,6 +27,6 @@ docker logs nome_do_container
 
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5432;Database=meu_banco;Username=app_user;Password=app_senha123"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=pw_tools_db;Username=app_user;Password=app#aipolicypwd"
   }
 }

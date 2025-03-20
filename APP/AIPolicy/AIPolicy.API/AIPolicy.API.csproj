@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AIPolicy.Application\AIPolicy.Application.csproj" />
     <ProjectReference Include="..\AIPolicy.Core\AIPolicy.Core.csproj" />
     <ProjectReference Include="..\AIPolicy.Infrastructure\AIPolicy.Infrastructure.csproj" />
   </ItemGroup>
