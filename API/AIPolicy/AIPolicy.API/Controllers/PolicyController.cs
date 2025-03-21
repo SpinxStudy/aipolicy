@@ -12,14 +12,7 @@ public class PolicyController : ControllerBase
     [HttpPost]
     public ActionResult Post(PolicyInputModel policyInputModel)
     {
-        var policy = new Policy
-        {
-            Version = policyInputModel.Version,
-            Triggers = policyInputModel.Triggers,
-            LastChange = policyInputModel.LastChange
-        };
-
-        return Ok(policy);
+        return Ok();
     }
 
     [HttpGet("{id}")]

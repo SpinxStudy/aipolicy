@@ -1,10 +1,8 @@
-﻿using AIPolicy.Core.Entity;
-
-namespace AIPolicy.Application.InputModel;
+﻿namespace AIPolicy.Application.InputModel;
 
 public class PolicyInputModel
 {
     public int Version { get; set; }
-    public List<Trigger> Triggers { get; set; }
-    public DateTime LastChange { get; set; }
+    public string? Name { get; set; }
+    public List<TriggerInputModel> Triggers { get; set; } = new List<TriggerInputModel>();
 }
