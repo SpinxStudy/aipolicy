@@ -13,13 +13,7 @@ public class Policy
 
     public int Id { get; set; }
     public int Version { get; set; }
-    public List<Trigger> Triggers { get; set; }
+    public string? Name { get; set; }
     public DateTime LastChange { get; set; }
-
-    public Policy()
-    {
-        Version = 0;
-        Id = 0;
-        Triggers = new List<Trigger>();
-    }
+    public List<Trigger> Triggers { get; set; } = new List<Trigger>();
 }
