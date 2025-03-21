@@ -22,8 +22,8 @@ public class PolicyController : ControllerBase
         return Ok(policy);
     }
 
-   [HttpGet("{id}")]
-   public IActionResult GetById(int id)
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
     {
         var policy = new Policy
         {

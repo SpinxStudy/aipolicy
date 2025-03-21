@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AIPolicy.Application.ViewModel
+﻿namespace AIPolicy.Application.ViewModel
 {
     internal class ConditionViewModel
     {
