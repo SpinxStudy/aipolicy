@@ -38,8 +38,8 @@ public class PolicyRepository : IPolicyRepository
                                 c.condition_left_id AS ConditionLeftId, c.subnode_l AS SubNodeL,
                                 c.condition_right_id AS ConditionRightId, c.subnode_r AS SubNodeR, c.last_change AS LastChange
                             FROM public.""Policy"" p
-                                LEFT JOIN public.""Trigger"" t ON p.id = t.id_policy
-                                LEFT JOIN public.""Condition"" c ON t.id = c.id_trigger
+                            LEFT JOIN public.""Trigger"" t ON p.id = t.id_policy
+                            LEFT JOIN public.""Condition"" c ON t.id = c.id_trigger
                             WHERE p.id = @Id";
     private const string UpdatePolicyQuery = @"
                             UPDATE public.""Policy""
@@ -93,7 +93,6 @@ public class PolicyRepository : IPolicyRepository
             PolicyGetCompleteQuery,
             (policy, trigger, condition) =>
             {
-                // Mapping Policy
                 if (!policies.TryGetValue(policy.Id, out var existingPolicy))
                 {
                     existingPolicy = policy;
@@ -101,19 +100,19 @@ public class PolicyRepository : IPolicyRepository
                     policies.Add(policy.Id, existingPolicy);
                 }
 
-                // Mapping Trigger
                 if (trigger != null && !triggers.ContainsKey(trigger.Id))
                 {
                     existingPolicy.Triggers.Add(trigger);
                     triggers.Add(trigger.Id, trigger);
                 }
 
-                // Mapping condition and building tree
                 if (condition != null && !conditions.ContainsKey(condition.Id))
                 {
                     conditions.Add(condition.Id, condition);
-                    var parentTrigger = triggers[condition.IdTrigger];
-                    parentTrigger.RootCondition ??= BuildConditionTree(condition, conditions);
+                    if (trigger?.Id == condition.IdTrigger)
+                    {
+                        triggers[condition.IdTrigger].RootCondition ??= BuildConditionTree(condition, conditions);
+                    }
                 }
 
                 return existingPolicy;

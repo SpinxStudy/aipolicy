@@ -1,7 +1,5 @@
 ﻿using AIPolicy.Application.InputModel;
 using AIPolicy.Application.Service;
-using AIPolicy.Application.ViewModel;
-using AIPolicy.Core.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AIPolicy.API.Controllers;
@@ -44,7 +42,7 @@ public class PolicyController : ControllerBase
     public async Task<IActionResult> Create([FromBody] PolicyInputModel policyInput)
     {
         var id = await _policyService.CreateAsync(policyInput);
-        var policyView = await _policyService.GetByIdAsync(id); // Retorna o objeto criado
+        var policyView = await _policyService.GetByIdAsync(id);
         return CreatedAtAction(nameof(GetById), new { id }, policyView);
     }
 
