@@ -54,6 +54,16 @@ Frontend desenvolvido em Angular 19 com Node.js 20.
    ng serve --host 0.0.0.0 --port 4200 --hmr --poll=2000
    ```
 
+8. Start container:
+   ```bash
+   docker start angular-dev-container
+   ```
+
+9. Conecte-se ao container:
+   ```bash
+   docker exec -it angular-dev-container bash
+   ```
+
 ## Estrutura do Projeto
 
 O código fonte da aplicação Angular está organizado no diretório `/Angular`.
