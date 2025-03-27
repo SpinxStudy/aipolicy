@@ -1,3 +1,4 @@
+using AIPolicy.Application.Mapper;
 using AIPolicy.Application.Service;
 using AIPolicy.Core.Interface.Repository;
 using AIPolicy.Infrastructure.Persistency.Repository;
@@ -14,6 +15,11 @@ builder.Services.AddSwaggerGen();
 // Dependencies
 builder.Services.AddScoped<ITriggerRepository, TriggerRepository>();
 builder.Services.AddScoped<TriggerService>();
+builder.Services.AddScoped<IPolicyRepository, PolicyRepository>();
+builder.Services.AddScoped<IPolicyService, PolicyService>();
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(PolicyMapperProfile));
 
 var app = builder.Build();
 
