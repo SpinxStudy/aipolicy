@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
     <Folder Include="Enum\" />
-    <Folder Include="Interface\Service\" />
     <Folder Include="Service\" />
   </ItemGroup>
 

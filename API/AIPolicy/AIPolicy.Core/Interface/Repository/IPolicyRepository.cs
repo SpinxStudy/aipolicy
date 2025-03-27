@@ -2,11 +2,7 @@
 
 namespace AIPolicy.Core.Interface.Repository;
 
-public interface IPolicyRepository
+public interface IPolicyRepository : IRepository<Policy>
 {
-    Task<Policy> AddAsync(Policy policy);
-    Task<Policy?> GetByIdAsync(int id);
-    Task<IEnumerable<Policy>> GetAllAsync();
-    Task UpdateAsync(Policy policy);
-    Task DeleteAsync(int id);
+    Task<Policy> GetCompletePolicyAsync(int id);
 }

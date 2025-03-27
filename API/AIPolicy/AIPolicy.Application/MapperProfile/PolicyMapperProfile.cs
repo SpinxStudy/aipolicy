@@ -9,12 +9,12 @@ public class PolicyMapperProfile : Profile
 {
     public PolicyMapperProfile()
     {
-        CreateMap<PolicyInputModel, Policy>();
-        CreateMap<TriggerInputModel, Trigger>();
-        CreateMap<ConditionInputModel, Condition>();
+        CreateMap<PolicyInputModel, Policy>().ReverseMap();
+        CreateMap<TriggerInputModel, Trigger>().ReverseMap();
+        CreateMap<ConditionInputModel, Condition>().ReverseMap();
 
-        CreateMap<Policy, PolicyViewModel>();
-        CreateMap<Trigger, TriggerViewModel>();
-        CreateMap<Condition, ConditionViewModel>();
+        CreateMap<Policy, PolicyViewModel>().ReverseMap();
+        CreateMap<Trigger, TriggerViewModel>().ReverseMap();
+        CreateMap<Condition, ConditionViewModel>().ReverseMap();
     }
 }
