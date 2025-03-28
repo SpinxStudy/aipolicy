@@ -30,12 +30,12 @@ Frontend desenvolvido em Angular 19 com Node.js 20.
 
 4. Execute o container docker para desenvolvimento mapeando o código fonte:
    ```bash
-   docker run -d \
-       --name angular-dev-container \
-       -v ${PWD}:/app \
-       -p 4200:4200 \
-       angular-dev:1.0 \
-       tail -f /dev/null
+   docker run -d `
+    --name angular-dev-container `
+    -v "$($PWD):/app" `
+    -p 4200:4200 `
+    angular-dev:1.0 `
+    tail -f /dev/null
    ```
 
 5. Conecte-se ao container:

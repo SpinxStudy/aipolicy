@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
+import { policyRoutes } from './features/policy/policy.route';
 
-export const routes: Routes = [
-    { path: 'policies', loadComponent: () => import('./features/policy/policy-list/policy-list.component').then(m => m.PolicyListComponent) }
-  ];
+export const appRoutes: Routes = [
+  { path: '', redirectTo: '/policies', pathMatch: 'full' },
+  ...policyRoutes,
+  { path: '**', redirectTo: '/policies' }
+];

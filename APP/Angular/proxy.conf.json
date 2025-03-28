@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://host.docker.internal:7073",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "ws": false
+    }
+  }
