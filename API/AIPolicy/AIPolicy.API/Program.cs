@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSwagger", policy =>
     {
-        policy.WithOrigins("https://localhost:7073") // Origem do Swagger
+        policy.WithOrigins("https://localhost:7073") 
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
