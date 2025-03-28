@@ -1,0 +1,13 @@
+<div class="policy-form">
+    <h2>{{ isEditMode ? 'Edit Policy' : 'New Policy' }}</h2>
+    <form (ngSubmit)="savePolicy()">
+      <div>
+        <label for="name">Nome:</label>
+        <input id="name" name="name" [(ngModel)]="policy.name" required />
+      </div>
+      <div class="actions">
+        <button type="submit" [disabled]="!policy.name">Save</button>
+        <a [routerLink]="['/policies']">Cancel</a>
+      </div>
+    </form>
+  </div>

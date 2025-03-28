@@ -1,1 +1,27 @@
-<p>policy-list works!</p>
+<div class="policy-list">
+    <h2>Policy List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Version</th>
+          <th>Last Change</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies">
+          <td>{{ policy.id }}</td>
+          <td>{{ policy.name }}</td>
+          <td>{{ policy.version }}</td>
+          <td>{{ policy.lastChange | date:'short' }}</td>
+          <td>
+            <a [routerLink]="['/policy', policy.id, 'edit']">Edit</a>
+            <button (click)="deletePolicy(policy.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/policy', 'new']">New Policy</a>
+  </div>
